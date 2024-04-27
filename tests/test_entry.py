@@ -157,16 +157,16 @@ class TestSequenceFunctions(unittest.TestCase):
         result = fg.rss_str()
         self.assertIn(b'domain="https://example.com/category"', result)
 
-    def test_content_html_type(self):
+    def test_content_cdata_type(self):
         fg = FeedGenerator()
         fg.title('A Title')
         fg.id('https://example.com/feed.xml')
         fe = fg.add_entry()
-        fe.id('https://example.com/entry')
-        fe.title('An Entry Title')
-        fe.content('content', type='html')
+        fe.id('http://lernfunk.de/media/654322/1')
+        fe.title('some title')
+        fe.content('content', type='CDATA')
         result = fg.atom_str()
-        expected = b'<content type="html"><![CDATA[content]]></content>'
+        expected = b'<content type="CDATA"><![CDATA[content]]></content>'
         self.assertIn(expected, result)
 
     def test_summary_html_type(self):
@@ -179,5 +179,5 @@ class TestSequenceFunctions(unittest.TestCase):
         fe.link(href='https://example.com/entry')
         fe.summary('<p>summary</p>', type='html')
         result = fg.atom_str()
-        expected = b'<summary type="html"><![CDATA[<p>summary</p>]]></summary>'
+        expected = b'<summary type="html">&lt;p&gt;summary&lt;/p&gt;</summary>'
         self.assertIn(expected, result)

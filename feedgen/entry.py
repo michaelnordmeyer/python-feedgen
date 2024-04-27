@@ -38,13 +38,13 @@ def _add_text_elm(entry, data, name):
             xhtml = '<div xmlns="http://www.w3.org/1999/xhtml">' \
                     + data.get(name) + '</div>'
             elm.append(xml_fromstring(xhtml))
-        elif type_ == 'html':
+        elif type_ == 'CDATA':
             elm.text = CDATA(data.get(name))
         # Parse XML and embed it
         elif type_ and (type_.endswith('/xml') or type_.endswith('+xml')):
             elm.append(xml_fromstring(data[name]))
         # Embed the text in escaped form
-        elif not type_ or type_.startswith('text'):
+        elif not type_ or type_.startswith('text') or type_ == 'html':
             elm.text = data.get(name)
         # Everything else should be included base64 encoded
         else:
@@ -215,7 +215,7 @@ class FeedEntry(object):
             XMLNS_CONTENT = 'http://purl.org/rss/1.0/modules/content/'
             content = xml_elem('{%s}encoded' % XMLNS_CONTENT, entry)
             content.text = CDATA(self.__rss_content['content']) \
-                if self.__rss_content.get('type', '') == 'html' \
+                if self.__rss_content.get('type', '') == 'CDATA' \
                 else self.__rss_content['content']
         elif self.__rss_description:
             description = xml_elem('description', entry)
@@ -223,7 +223,7 @@ class FeedEntry(object):
         elif self.__rss_content:
             description = xml_elem('description', entry)
             description.text = CDATA(self.__rss_content['content']) \
-                if self.__rss_content.get('type', '') == 'html' \
+                if self.__rss_content.get('type', '') == 'CDATA' \
                 else self.__rss_content['content']
         for a in self.__rss_author or []:
             author = xml_elem('author', entry)
@@ -381,7 +381,7 @@ class FeedEntry(object):
 
         :param content: The content of the feed entry.
         :param src: Link to the entries content.
-        :param type: The type attribute of the feed.
+        :param type: If type is CDATA content would not be escaped.
         :returns: Content element of the entry.
         '''
         if src is not None:
