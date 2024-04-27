@@ -21,13 +21,13 @@
 
         >>> from feedgen.feed import FeedGenerator
         >>> fg = FeedGenerator()
-        >>> fg.id('http://lernfunk.de/media/654321')
+        >>> fg.id('https://example.com/feed.xml')
         >>> fg.title('Some Testfeed')
-        >>> fg.author( {'name':'John Doe','email':'john@example.de'} )
-        >>> fg.link( href='http://example.com', rel='alternate' )
-        >>> fg.logo('http://ex.com/logo.jpg')
+        >>> fg.author({'name':'John Doe','email':'jdoe@example.com'})
+        >>> fg.link(href='https://example.com', rel='alternate')
+        >>> fg.logo('https://example.com/logo.jpg')
         >>> fg.subtitle('This is a cool feed!')
-        >>> fg.link( href='http://larskiesow.de/test.atom', rel='self' )
+        >>> fg.link(href='https://example.com/feed.xml', rel='self')
         >>> fg.language('en')
 
     Note that for the methods which set fields that can occur more than once in
@@ -65,8 +65,8 @@
     convenient way to do this, is to call the method add_entry(...) like this::
 
         >>> fe = fg.add_entry()
-        >>> fe.id('http://lernfunk.de/media/654321/1')
-        >>> fe.title('The First Episode')
+        >>> fe.id('https://example.com/entry-1')
+        >>> fe.title('The First Entry')
 
     The FeedGenerator's method add_entry(...) will automatically create a new
     FeedEntry object, append it to the feeds internal list of entries and

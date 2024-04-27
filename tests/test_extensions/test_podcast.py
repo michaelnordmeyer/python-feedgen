@@ -11,7 +11,7 @@ class TestExtensionPodcast(unittest.TestCase):
         self.fg = FeedGenerator()
         self.fg.load_extension('podcast')
         self.fg.title('title')
-        self.fg.link(href='http://example.com', rel='self')
+        self.fg.link(href='https://example.com', rel='self')
         self.fg.description('description')
 
     def test_category_new(self):
@@ -19,8 +19,8 @@ class TestExtensionPodcast(unittest.TestCase):
                                           'sub': 'Podcasting'}])
         self.fg.podcast.itunes_explicit('no')
         self.fg.podcast.itunes_complete('no')
-        self.fg.podcast.itunes_new_feed_url('http://example.com/new-feed.rss')
-        self.fg.podcast.itunes_owner('John Doe', 'john@example.com')
+        self.fg.podcast.itunes_new_feed_url('https://example.com/new-feed.rss')
+        self.fg.podcast.itunes_owner('John Doe', 'jdoe@example.com')
         ns = {'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'}
         root = etree.fromstring(self.fg.rss_str())
         cat = root.xpath('/rss/channel/itunes:category/@text', namespaces=ns)
@@ -33,8 +33,8 @@ class TestExtensionPodcast(unittest.TestCase):
         self.fg.podcast.itunes_category('Technology', 'Podcasting')
         self.fg.podcast.itunes_explicit('no')
         self.fg.podcast.itunes_complete('no')
-        self.fg.podcast.itunes_new_feed_url('http://example.com/new-feed.rss')
-        self.fg.podcast.itunes_owner('John Doe', 'john@example.com')
+        self.fg.podcast.itunes_new_feed_url('https://example.com/new-feed.rss')
+        self.fg.podcast.itunes_owner('John Doe', 'jdoe@example.com')
         ns = {'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'}
         root = etree.fromstring(self.fg.rss_str())
         cat = root.xpath('/rss/channel/itunes:category/@text', namespaces=ns)
@@ -45,7 +45,7 @@ class TestExtensionPodcast(unittest.TestCase):
 
     def test_podcastItems(self):
         fg = self.fg
-        fg.podcast.itunes_author('Lars Kiesow')
+        fg.podcast.itunes_author('John Doe')
         fg.podcast.itunes_block('x')
         fg.podcast.itunes_complete(False)
         fg.podcast.itunes_explicit('no')
@@ -53,7 +53,7 @@ class TestExtensionPodcast(unittest.TestCase):
         fg.podcast.itunes_subtitle('x')
         fg.podcast.itunes_summary('x')
         fg.podcast.itunes_type('episodic')
-        self.assertEqual(fg.podcast.itunes_author(), 'Lars Kiesow')
+        self.assertEqual(fg.podcast.itunes_author(), 'John Doe')
         self.assertEqual(fg.podcast.itunes_block(), 'x')
         self.assertEqual(fg.podcast.itunes_complete(), 'no')
         self.assertEqual(fg.podcast.itunes_explicit(), 'no')
@@ -66,12 +66,12 @@ class TestExtensionPodcast(unittest.TestCase):
         ns = {'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'}
         root = etree.fromstring(self.fg.rss_str())
         author = root.xpath('/rss/channel/itunes:author/text()', namespaces=ns)
-        self.assertEqual(author, ['Lars Kiesow'])
+        self.assertEqual(author, ['John Doe'])
 
     def test_podcastEntryItems(self):
         fe = self.fg.add_item()
         fe.title('y')
-        fe.podcast.itunes_author('Lars Kiesow')
+        fe.podcast.itunes_author('John Doe')
         fe.podcast.itunes_block('x')
         fe.podcast.itunes_duration('00:01:30')
         fe.podcast.itunes_explicit('no')
@@ -84,7 +84,7 @@ class TestExtensionPodcast(unittest.TestCase):
         fe.podcast.itunes_episode(1)
         fe.podcast.itunes_title('Podcast Title')
         fe.podcast.itunes_episode_type('full')
-        self.assertEqual(fe.podcast.itunes_author(), 'Lars Kiesow')
+        self.assertEqual(fe.podcast.itunes_author(), 'John Doe')
         self.assertEqual(fe.podcast.itunes_block(), 'x')
         self.assertEqual(fe.podcast.itunes_duration(), '00:01:30')
         self.assertEqual(fe.podcast.itunes_explicit(), 'no')
@@ -103,4 +103,4 @@ class TestExtensionPodcast(unittest.TestCase):
         root = etree.fromstring(self.fg.rss_str())
         author = root.xpath('/rss/channel/item/itunes:author/text()',
                             namespaces=ns)
-        self.assertEqual(author, ['Lars Kiesow'])
+        self.assertEqual(author, ['John Doe'])

@@ -580,8 +580,8 @@ class FeedGenerator(object):
 
         Example::
 
-            >>> feedgen.link( href='http://example.com/', rel='self')
-            [{'href':'http://example.com/', 'rel':'self'}]
+            >>> feedgen.link( href='https://example.com/', rel='self')
+            [{'href':'https://example.com/', 'rel':'self'}]
 
         '''
         if link is None and kwargs:

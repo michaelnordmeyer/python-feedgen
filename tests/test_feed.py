@@ -26,27 +26,27 @@ class TestSequenceFunctions(unittest.TestCase):
         self.nsAtom = "http://www.w3.org/2005/Atom"
         self.nsRss = "http://purl.org/rss/1.0/modules/content/"
 
-        self.feedId = 'http://lernfunk.de/media/654321'
-        self.title = 'Some Testfeed'
+        self.feedId = 'https://example.com/feed.xml'
+        self.title = 'A Feed'
 
         self.authorName = 'John Doe'
-        self.authorMail = 'john@example.de'
+        self.authorMail = 'jdoe@example.com'
         self.author = {'name': self.authorName, 'email': self.authorMail}
 
-        self.linkHref = 'http://example.com'
+        self.linkHref = 'https://example.com'
         self.linkRel = 'alternate'
 
-        self.logo = 'http://ex.com/logo.jpg'
+        self.logo = 'https://example.com/logo.jpg'
         self.subtitle = 'This is a cool feed!'
 
-        self.link2Href = 'http://larskiesow.de/test.atom'
+        self.link2Href = 'https://example.com/feed.xml'
         self.link2Rel = 'self'
 
         self.language = 'en'
 
-        self.categoryTerm = 'This category term'
-        self.categoryScheme = 'This category scheme'
-        self.categoryLabel = 'This category label'
+        self.categoryTerm = 'A category term'
+        self.categoryScheme = 'A category scheme'
+        self.categoryLabel = 'A category label'
 
         self.cloudDomain = 'example.com'
         self.cloudPort = '4711'
@@ -54,13 +54,13 @@ class TestSequenceFunctions(unittest.TestCase):
         self.cloudRegisterProcedure = 'registerProcedure'
         self.cloudProtocol = 'SOAP 1.1'
 
-        self.icon = "http://example.com/icon.png"
+        self.icon = "https://example.com/icon.png"
         self.contributor = {'name': "Contributor Name",
                             'uri': "Contributor Uri",
                             'email': 'Contributor email'}
         self.copyright = "The copyright notice"
         self.docs = 'http://www.rssboard.org/rss-specification'
-        self.managingEditor = 'mail@example.com'
+        self.managingEditor = 'managingeditor@example.com'
         self.rating = '(PICS-1.1 "http://www.classify.org/safesurf/" ' + \
             '1 r (SS~~000 1))'
         self.skipDays = 'Tuesday'
@@ -104,7 +104,7 @@ class TestSequenceFunctions(unittest.TestCase):
         fg.webMaster(self.webMaster)
         fg.updated('2017-02-05 13:26:58+01:00')
         fg.pubDate('2017-02-05 13:26:58+01:00')
-        fg.generator('python-feedgen', 'x', uri='https://feedgen.kiesow.be/')
+        fg.generator('python-feedgen', '0.0.0', uri='https://feedgen.kiesow.be/')
         fg.image(url=self.logo,
                  title=self.title,
                  link=self.link2Href,

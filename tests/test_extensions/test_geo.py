@@ -107,7 +107,7 @@ class TestExtensionGeo(unittest.TestCase):
         self.fg = FeedGenerator()
         self.fg.load_extension('geo')
         self.fg.title('title')
-        self.fg.link(href='http://example.com', rel='self')
+        self.fg.link(href='https://example.com', rel='self')
         self.fg.description('description')
 
     def test_point(self):

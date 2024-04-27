@@ -9,7 +9,7 @@ class TestExtensionDc(unittest.TestCase):
         self.fg = FeedGenerator()
         self.fg.load_extension('dc')
         self.fg.title('title')
-        self.fg.link(href='http://example.com', rel='self')
+        self.fg.link(href='https://example.com', rel='self')
         self.fg.description('description')
 
     def test_entryLoadExtension(self):
@@ -26,6 +26,6 @@ class TestExtensionDc(unittest.TestCase):
                 m(method)
                 self.assertEqual(m(), [method])
 
-        self.fg.id('123')
+        self.fg.id('https://example.com/feed.xml')
         self.assertTrue(self.fg.atom_str())
         self.assertTrue(self.fg.rss_str())

@@ -57,21 +57,21 @@ def main():
     arg = sys.argv[1]
 
     fg = FeedGenerator()
-    fg.id('http://lernfunk.de/_MEDIAID_123')
-    fg.title('Testfeed')
-    fg.author({'name': 'Lars Kiesow', 'email': 'lkiesow@uos.de'})
-    fg.link(href='http://example.com', rel='alternate')
+    fg.id('https://example.com/feed.xml')
+    fg.title('A Feed')
+    fg.author({'name': 'John Doe', 'email': 'jdoe@example.com'})
+    fg.link(href='https://example.com', rel='alternate')
     fg.category(term='test')
-    fg.contributor(name='Lars Kiesow', email='lkiesow@uos.de')
     fg.contributor(name='John Doe', email='jdoe@example.com')
-    fg.icon('http://ex.com/icon.jpg')
-    fg.logo('http://ex.com/logo.jpg')
+    fg.contributor(name='Jane Doe', email='jdoe@example.net')
+    fg.icon('https://example.com/icon.jpg')
+    fg.logo('https://example.com/logo.jpg')
     fg.rights('cc-by')
     fg.subtitle('This is a cool feed!')
-    fg.link(href='http://larskiesow.de/test.atom', rel='self')
+    fg.link(href='https://example.com/feed.xml', rel='self')
     fg.language('de')
     fe = fg.add_entry()
-    fe.id('http://lernfunk.de/_MEDIAID_123#1')
+    fe.id('https://example.com/entry')
     fe.title('First Element')
     fe.content('''Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Tamen aberramus a proposito, et, ne longius, prorsus, inquam, Piso,
@@ -80,8 +80,8 @@ def main():
             sit, intus veritas occultetur? Cum id fugiunt, re eadem defendunt,
             quae Peripatetici, verba.''')
     fe.summary(u'Lorem ipsum dolor sit amet, consectetur adipiscing elit…')
-    fe.link(href='http://example.com', rel='alternate')
-    fe.author(name='Lars Kiesow', email='lkiesow@uos.de')
+    fe.link(href='https://example.com/entry', rel='alternate')
+    fe.author(name='John Doe', email='jdoe@example.com')
 
     if arg == 'atom':
         print_enc(fg.atom_str(pretty=True))
@@ -91,17 +91,17 @@ def main():
         # Load the podcast extension. It will automatically be loaded for all
         # entries in the feed, too. Thus also for our “fe”.
         fg.load_extension('podcast')
-        fg.podcast.itunes_author('Lars Kiesow')
+        fg.podcast.itunes_author('John Doe')
         fg.podcast.itunes_category('Technology', 'Podcasting')
         fg.podcast.itunes_explicit('no')
         fg.podcast.itunes_complete('no')
-        fg.podcast.itunes_new_feed_url('http://example.com/new-feed.rss')
-        fg.podcast.itunes_owner('John Doe', 'john@example.com')
+        fg.podcast.itunes_new_feed_url('https://example.com/new-feed.rss')
+        fg.podcast.itunes_owner('John Doe', 'jdoe@example.com')
         fg.podcast.itunes_summary('Lorem ipsum dolor sit amet, consectetur ' +
                                   'adipiscing elit. Verba tu fingas et ea ' +
                                   'dicas, quae non sentias?')
         fg.podcast.itunes_type('episodic')
-        fe.podcast.itunes_author('Lars Kiesow')
+        fe.podcast.itunes_author('John Doe')
         fe.podcast.itunes_season(1)
         fe.podcast.itunes_episode(1)
         fe.podcast.itunes_title('First podcast episode')
@@ -110,7 +110,7 @@ def main():
 
     elif arg == 'torrent':
         fg.load_extension('torrent')
-        fe.link(href='http://example.com/torrent/debian-8-netint.iso.torrent',
+        fe.link(href='https://example.com/torrent/debian-8-netint.iso.torrent',
                 rel='alternate',
                 type='application/x-bittorrent, length=1000')
         fe.torrent.filename('debian-8.4.0-i386-netint.iso.torrent')
@@ -123,7 +123,7 @@ def main():
 
     elif arg.startswith('dc.'):
         fg.load_extension('dc')
-        fg.dc.dc_contributor('Lars Kiesow')
+        fg.dc.dc_contributor('John Doe')
         if arg.endswith('.atom'):
             print_enc(fg.atom_str(pretty=True))
         else:

@@ -47,13 +47,13 @@ data:
 
     from feedgen.feed import FeedGenerator
     fg = FeedGenerator()
-    fg.id('http://lernfunk.de/media/654321')
+    fg.id('https://example.com/feed.xml')
     fg.title('Some Testfeed')
-    fg.author( {'name':'John Doe','email':'john@example.de'} )
-    fg.link( href='http://example.com', rel='alternate' )
-    fg.logo('http://ex.com/logo.jpg')
+    fg.author( {'name':'John Doe','email':'jdoe@example.com'} )
+    fg.link(href='https://example.com', rel='alternate')
+    fg.logo('https://example.com/logo.jpg')
     fg.subtitle('This is a cool feed!')
-    fg.link( href='http://larskiesow.de/test.atom', rel='self' )
+    fg.link(href='https://example.com/feed.xml', rel='self')
     fg.language('en')
 
 Note that for the methods which set fields that can occur more than once in a
@@ -67,7 +67,7 @@ Example:
 
 .. code-block:: python
 
-    fg.contributor( name='John Doe', email='jdoe@example.com' )
+    fg.contributor(name='John Doe', email='jdoe@example.com')
     fg.contributor({'name':'John Doe', 'email':'jdoe@example.com'})
     fg.contributor([{'name':'John Doe', 'email':'jdoe@example.com'}, ...])
 
@@ -97,9 +97,9 @@ FeedEntry object:
 .. code-block:: python
 
     fe = fg.add_entry()
-    fe.id('http://lernfunk.de/media/654321/1')
-    fe.title('The First Episode')
-    fe.link(href="http://lernfunk.de/feed")
+    fe.id('https://example.com/entry-1')
+    fe.title('The First Entry')
+    fe.link(href="https://example.com/entry-1")
 
 The FeedGenerator's method `add_entry(...)` will generate a new FeedEntry
 object, automatically append it to the feeds internal list of entries and
@@ -134,7 +134,7 @@ meaning the extension is used for both kinds of feeds.
 **Example: Producing a Podcast**
 
 One extension already provided is the podcast extension. A podcast is an RSS
-feed with some additional elements for ITunes.
+feed with some additional elements for iTunes.
 
 To produce a podcast simply load the `podcast` extension:
 
@@ -147,10 +147,10 @@ To produce a podcast simply load the `podcast` extension:
     fg.podcast.itunes_category('Technology', 'Podcasting')
     ...
     fe = fg.add_entry()
-    fe.id('http://lernfunk.de/media/654321/1/file.mp3')
+    fe.id('https://example.com/podcast/episode-1.mp3')
     fe.title('The First Episode')
     fe.description('Enjoy our first episode.')
-    fe.enclosure('http://lernfunk.de/media/654321/1/file.mp3', 0, 'audio/mpeg')
+    fe.enclosure('https://example.com/podcast/episode-1.mp3', 0, 'audio/mpeg')
     ...
     fg.rss_str(pretty=True)
     fg.rss_file('podcast.xml')

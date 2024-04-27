@@ -21,14 +21,14 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertEqual(e.exception.code, None)
 
     def test_feed(self):
-        for ftype in 'rss', 'atom', 'podcast', 'torrent', 'dc.rss', \
-                     'dc.atom', 'syndication.rss', 'syndication.atom':
+        for ftype in 'rss', 'atom', 'dc.rss', 'dc.atom', 'podcast', \
+                     'syndication.rss', 'syndication.atom', 'torrent':
             sys.argv = ['feedgen', ftype]
             __main__.main()
 
     def test_file(self):
-        for extemsion in '.atom', '.rss':
-            fh, filename = tempfile.mkstemp(extemsion)
+        for extension in '.atom', '.rss':
+            fh, filename = tempfile.mkstemp(extension)
             sys.argv = ['feedgen', filename]
             try:
                 __main__.main()

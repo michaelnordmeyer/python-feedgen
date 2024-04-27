@@ -13,7 +13,7 @@ class TestExtensionSyndication(unittest.TestCase):
         self.fg = FeedGenerator()
         self.fg.load_extension('syndication')
         self.fg.title('title')
-        self.fg.link(href='http://example.com', rel='self')
+        self.fg.link(href='https://example.com', rel='self')
         self.fg.description('description')
 
     def test_update_period(self):

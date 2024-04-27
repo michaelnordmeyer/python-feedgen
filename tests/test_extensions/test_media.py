@@ -10,14 +10,14 @@ class TestExtensionMedia(unittest.TestCase):
     def setUp(self):
         self.fg = FeedGenerator()
         self.fg.load_extension('media')
-        self.fg.id('id')
+        self.fg.id('https://example.com/feed.xml')
         self.fg.title('title')
-        self.fg.link(href='http://example.com', rel='self')
+        self.fg.link(href='https://example.com', rel='self')
         self.fg.description('description')
 
     def test_media_content(self):
         fe = self.fg.add_item()
-        fe.id('id')
+        fe.id('https://example.com/feed.xml')
         fe.title('title')
         fe.content('content')
         fe.media.content(url='file1.xy')
