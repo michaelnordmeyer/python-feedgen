@@ -6,7 +6,7 @@
     Basic FeedGenerator extension which does nothing but provides all necessary
     methods.
 
-    :copyright: 2013, Lars Kiesow <lkiesow@uos.de>
+    :copyright: 2013-2024, Lars Kiesow <lkiesow@uos.de>
 
     :license: FreeBSD and LGPL, see license.* for more details.
 '''

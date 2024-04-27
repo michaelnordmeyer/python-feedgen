@@ -8,7 +8,7 @@
     It has support for extensions. Included is for example an extension to
     produce Podcasts.
 
-    :copyright: 2013 by Lars Kiesow
+    :copyright: 2013-2024 by Lars Kiesow
     :license: FreeBSD and LGPL, see license.* for more details.
 
 

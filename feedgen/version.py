@@ -3,7 +3,7 @@
     feedgen.version
     ~~~~~~~~~~~~~~~
 
-    :copyright: 2013-2018, Lars Kiesow <lkiesow@uos.de>
+    :copyright: 2013-2024, Lars Kiesow <lkiesow@uos.de>
 
     :license: FreeBSD and LGPL, see license.* for more details.
 

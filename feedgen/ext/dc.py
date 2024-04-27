@@ -8,7 +8,7 @@
     Descriptions partly taken from
     http://dublincore.org/documents/dcmi-terms/#elements-coverage
 
-    :copyright: 2013-2017, Lars Kiesow <lkiesow@uos.de>
+    :copyright: 2013-2024, Lars Kiesow <lkiesow@uos.de>
 
     :license: FreeBSD and LGPL, see license.* for more details.
 '''
