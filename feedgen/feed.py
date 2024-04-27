@@ -47,7 +47,7 @@ class FeedGenerator(object):
         self.__atom_contributor = None
         self.__atom_generator = {
                 'value': 'python-feedgen',
-                'uri': 'https://lkiesow.github.io/python-feedgen',
+                'uri': 'https://feedgen.kiesow.be/',
                 'version': feedgen.version.version_str}  # {value*,uri,version}
         self.__atom_icon = None
         self.__atom_logo = None

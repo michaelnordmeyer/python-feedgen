@@ -104,13 +104,13 @@ class TestSequenceFunctions(unittest.TestCase):
         fg.webMaster(self.webMaster)
         fg.updated('2017-02-05 13:26:58+01:00')
         fg.pubDate('2017-02-05 13:26:58+01:00')
-        fg.generator('python-feedgen', 'x', uri='http://github.com/lkie...')
+        fg.generator('python-feedgen', 'x', uri='https://feedgen.kiesow.be/')
         fg.image(url=self.logo,
                  title=self.title,
                  link=self.link2Href,
                  width='123',
                  height='123',
-                 description='Example Inage')
+                 description='Example Image')
 
         self.fg = fg
 

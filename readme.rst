@@ -13,7 +13,7 @@ at license.bsd and license.lgpl.
 More details about the project:
 
 - `Repository <https://github.com/lkiesow/python-feedgen>`_
-- `Documentation <https://lkiesow.github.io/python-feedgen/>`_
+- `Documentation <https://feedgen.kiesow.be/>`_
 - `Python Package Index <https://pypi.python.org/pypi/feedgen/>`_
 
 

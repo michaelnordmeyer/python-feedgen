@@ -7,7 +7,7 @@ Release:        1%{?dist}
 Summary:        Feed Generator (ATOM, RSS, Podcasts)
 
 License:        BSD or LGPLv3
-URL:            http://lkiesow.github.io/python-feedgen
+URL:            https://feedgen.kiesow.be/
 #Source0:        https://github.com/lkiesow/%{name}/archive/v%{version}.tar.gz
 Source0:        %{pypi_source}
 BuildArch:      noarch
