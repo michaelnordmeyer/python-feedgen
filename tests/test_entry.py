@@ -71,7 +71,8 @@ class TestSequenceFunctions(unittest.TestCase):
                            replace=True)[0]
         self.assertEqual(author.get('name'), 'John Doe')
         self.assertEqual(author.get('email'), 'jdoe@example.com')
-        contributor = fe.contributor(name='John Doe', email='jdoe@ex.com')[0]
+        contributor = fe.contributor(name='John Doe',
+                                     email='jdoe@example.com')[0]
         self.assertEqual(contributor, fe.contributor()[0])
         self.assertEqual(contributor.get('name'), 'John Doe')
         self.assertEqual(contributor.get('email'), 'jdoe@example.com')
